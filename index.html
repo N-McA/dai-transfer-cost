@@ -1,0 +1,258 @@
+<!doctype html>
+  <html lang=en>
+  <head>
+    <meta charset=utf-8>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DAI Transfer Cost</title>
+    <link rel="icon" href="imgs/dai-favicon.png">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
+  </head>
+  <body>
+    <style>
+
+      body {
+        color: #8D94AD;
+        font-family: Montserrat;
+        font-size: 3vmin;
+        background-color: #1C2236;
+        text-align: center;
+        padding-left: 2rem;
+        padding-right: 2rem;  
+        max-width: 640px;
+        margin-left: auto;
+        margin-right: auto;      
+      }
+
+      a {
+        color: #8D94AD;
+      }
+
+      .price-bar {
+        font-size: 5vmin;
+      }
+
+      #dai-cost-p {
+        font-size: 17.5vmin; 
+        font-family: Lato; 
+        font-weight: bold;       
+        color: whitesmoke;                
+        margin-top: 0rem;
+        margin-bottom: 0rem;
+      }
+
+      #dai-cost-p.loading {
+        font-size: 12vmin; 
+        font-family: Lato; 
+        color: grey;       
+      }
+
+      .unit-button {
+        padding-left: 2vmin;
+        padding-right: 2vmin;
+        cursor: pointer;
+      }
+
+      .unit-button:hover {
+        font-weight: bold;
+      }
+      
+      .unit-button.selected {
+        color: green;
+        font-weight: bold;        
+      }
+
+      .center-image {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 30vmin;
+        max-height: 30vmin;
+      }
+
+      .bullet-image {
+        display: inline-block;
+        max-width: 10vmin;
+        max-height: 10vmin;
+        vertical-align: middle;
+        margin: 1rem;
+        margin-bottom: .3rem;
+        margin-top: 0.3rem;
+      }
+
+      .icon-image {
+        display: inline-block;
+        max-width: 1.75em;
+        max-height: 1.75em;
+        vertical-align: middle;
+      }
+
+      .link-list-el {
+        margin-bottom: 0rem;
+        margin-top: 0rem;
+      }
+
+      .link-list {
+        display: inline-block;
+        text-align: left;
+        font-size: 4vmin;
+      }
+
+      .logo-bar {
+        margin-top: 3vh;
+        font-family: 'Lato';
+        text-align: left;
+        vertical-align: middle;
+      }
+
+      .logo-bar a {
+        text-decoration: none;
+        color: whitesmoke;        
+      }
+
+    </style>
+      <div class="logo-bar">
+        <a href="https://www.dai-fee.info"> 
+          <img 
+            style="margin-right: 0.5em;"
+            class='icon-image' 
+            src="imgs/dai-logo.png" 
+            alt="The DAI Logo">DAI-Fee.info</a>
+      </div>
+      <div class='price-bar'>
+          <p> Transferring any amount of DAI currently costs:</p>    
+          <p id="dai-cost-p" class='loading'>Loading...</p>  
+          <p id='unit-buttons'> 
+            <a class='unit-button' onclick="unitButtonOnClick(this);">
+              ETH</a>
+            <a class='unit-button selected' onclick="unitButtonOnClick(this);">
+              USD</a>
+            <a class='unit-button' onclick="unitButtonOnClick(this);">
+              GBP</a>
+            <a class='unit-button' onclick="unitButtonOnClick(this);">
+              EUR</a>
+          </p>
+      </div>
+      <div class='link-list'>
+    
+        <p class='link-list-el'><a href="https://makerdao.com/"> 
+          <img 
+            class='bullet-image' 
+            src="imgs/dai-logo.png" 
+            alt="The DAI Stablecoin Logo">Learn more about DAI</a>
+        </p> 
+
+        <p class='link-list-el'><a href="https://makerdao.com/"> 
+          <img 
+            class='bullet-image' 
+            src="imgs/ethereum-logo.png" 
+            alt="The Ethereum Logo">Learn more about ETH</a>
+        </p> 
+      </div>
+
+      <p>
+        The transaction cost/fee quoted is for a median completion time of around two minutes; this site will eventually be updated to include live completion time estimates.
+      </p>
+
+  </body>
+  <footer>
+    <p>
+      This site would not be possible without the APIs provided by
+      <a href="https://ethgasstation.info"> ETH Gas Station</a> and <a href="https://cryptocompare.com">CryptoCompare</a>. They provide more detailed information about gas prices and exchange rates respectively.
+    </p>
+    <p>
+        © Off Chain Capital LTD.
+    </p>
+    <script>
+
+      let state = {
+        unit: 'USD',
+      }
+
+      const SYMBOLS = {
+        'USD': '$',
+        'EUR': '€',
+        'GBP': '£',
+        'ETH': 'Ξ',
+      }
+
+      function unitButtonOnClick(self) {
+        changeUnit(self.innerHTML.trim());
+      }
+      
+      function changeUnit(newUnit) {
+        let buttonHolder = document.getElementById('unit-buttons');
+        let buttons = buttonHolder.getElementsByClassName('unit-button')
+        for (let b of buttons) {
+          if (b.innerHTML.trim() === newUnit) {
+            b.classList.add('selected');
+          } else {
+            b.classList.remove('selected');
+          }
+        }
+        state.unit = newUnit;
+        updateDisplayedRate()
+      }
+
+      
+      function getDAITransferCostETH() {
+      
+        const GAS_API_URL = "https://ethgasstation.info/json/ethgasAPI.json";
+        const DAI_TX_GAS_USAGE = 37426;
+        const GIGAWEI_TO_ETH = 1e-9;
+
+        let p = fetch(GAS_API_URL)
+          .then(x => x.json())
+          .then(gasData => {
+            // For some reason, ethgasstation returns in 10*GWs
+            let gasPriceGW = gasData['average'] / 10;
+            let cost = DAI_TX_GAS_USAGE * gasPriceGW;
+            return cost * GIGAWEI_TO_ETH;
+          })
+        return p
+      }
+
+      function getRates() {
+        // So I would love to use CoinMarketCap, but their API does not CORS.
+        const PRICE_API_ROOT = 'https://min-api.cryptocompare.com/data/';
+        const PRICE_API_ARGS = 'price?fsym=ETH&tsyms=USD,EUR,GBP';
+        const PRICE_API_URL = PRICE_API_ROOT + PRICE_API_ARGS
+
+        let p = fetch(PRICE_API_URL)
+          .then(x => x.json())
+          .then(priceData => {
+            priceData['ETH'] = 1.0;
+            return priceData
+          })    
+        return p;
+      }
+
+      function showPrice(price, unitString) {
+        let p = document.getElementById('dai-cost-p');
+        p.classList.remove('loading')
+        p.innerHTML = unitString + ' ' + price.toPrecision(3);
+      }
+
+      function showError(e) {
+        let p = document.getElementById('dai-cost-p');
+        p.innerHTML = e;
+      }
+
+      function updateDisplayedRate() {
+        Promise.all([getDAITransferCostETH(), getRates()])
+          .then(([ethCost, rates]) => {
+            let rate = rates[state.unit];
+            let symbol = SYMBOLS[state.unit];
+            showPrice(ethCost * rate, symbol);
+          })
+          .catch(e => {
+            showError('Error loading data.');
+            console.log(e);
+          })
+      }
+
+      updateDisplayedRate();
+
+    </script>
+  </footer>
+</html>
