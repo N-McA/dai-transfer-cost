@@ -8,27 +8,20 @@
     <meta name="author" content="Off Chain Capital LTD.">
     <title>DAI-Fee.info</title>
     <link rel="icon" href="imgs/dai-favicon.png">
-    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
-    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
   </head>
   <body>
     <style>
 
-      .medium-font { font-size: 1rem; }
-      @media (max-width: 400px) {
+      .medium-font { font-size: 5vmin; }
+      @media (max-width: 350px) {
         .medium-font {
           font-size: 1rem;
-        }
-      }
-      @media (min-width: 400px){
-        .medium-font {
-          font-size: 3vmin;
         }
       }
 
       body {
         color: #8D94AD;
-        font-family: Montserrat;
+        font-family: Verdana, Tahoma, sans-serif;
         font-size: 1rem;
         background-color: #1C2236;
         text-align: center;
@@ -45,7 +38,7 @@
 
       #dai-cost-p {
         font-size: 15vmin; 
-        font-family: Lato; 
+        font-family: Tahoma, sans-serif;
         font-weight: bold;       
         color: whitesmoke;                
         margin-top: 0rem;
@@ -54,7 +47,7 @@
 
       #dai-cost-p.loading {
         font-size: 12vmin; 
-        font-family: Lato; 
+        font-family: Tahoma, sans-serif;
         color: grey;       
       }
 
@@ -110,7 +103,6 @@
 
       .logo-bar {
         margin-top: 3vh;
-        font-family: 'Lato';
         text-align: left;
         vertical-align: middle;
       }
@@ -121,6 +113,7 @@
       }
 
     </style>
+
       <div class="logo-bar medium-font">
         <a href="https://www.dai-fee.info"> 
           <img 
@@ -129,37 +122,41 @@
             src="imgs/dai-logo.png" 
             alt="The DAI Logo">DAI-Fee.info</a>
       </div>
-      <div class='price-bar medium-font'>
-          <p> Transferring any amount of DAI currently costs:</p>    
-          <p id="dai-cost-p" class='loading'>Loading...</p>  
-          <p id='unit-buttons'> 
-            <a class='unit-button' onclick="unitButtonOnClick(this);">
-              ETH</a>
-            <a class='unit-button selected' onclick="unitButtonOnClick(this);">
-              USD</a>
-            <a class='unit-button' onclick="unitButtonOnClick(this);">
-              GBP</a>
-            <a class='unit-button' onclick="unitButtonOnClick(this);">
-              EUR</a>
-          </p>
-      </div>
-      <div class='link-list medium-font'>
-    
-        <p class='link-list-el'><a href="https://makerdao.com/"> 
-          <img 
-            class='bullet-image' 
-            src="imgs/dai-logo.png" 
-            alt="The DAI Stablecoin Logo">Learn more about DAI</a>
-        </p> 
 
-        <p class='link-list-el'><a href="https://makerdao.com/"> 
-          <img 
-            class='bullet-image' 
-            src="imgs/ethereum-logo.png" 
-            alt="The Ethereum Logo">Learn more about ETH</a>
-        </p> 
-      </div>
+      <main>
+        <div class='price-bar medium-font'>
+            <p> Transferring any amount of DAI currently costs:</p>    
+            <p id="dai-cost-p" class='loading'>Loading...</p>  
+            <p id='unit-buttons'> 
+              <a class='unit-button' onclick="unitButtonOnClick(this);">
+                ETH</a>
+              <a class='unit-button selected' onclick="unitButtonOnClick(this);">
+                USD</a>
+              <a class='unit-button' onclick="unitButtonOnClick(this);">
+                GBP</a>
+              <a class='unit-button' onclick="unitButtonOnClick(this);">
+                EUR</a>
+            </p>
+        </div>
+        
+        <div class='link-list medium-font'>
+      
+          <p class='link-list-el'><a href="https://makerdao.com/"> 
+            <img 
+              class='bullet-image' 
+              src="imgs/dai-logo.png" 
+              alt="The DAI Stablecoin Logo">Learn more about DAI</a>
+          </p> 
 
+          <p class='link-list-el'><a href="https://makerdao.com/"> 
+            <img 
+              class='bullet-image' 
+              src="imgs/ethereum-logo.png" 
+              alt="The Ethereum Logo">Learn more about ETH</a>
+          </p> 
+        </div>
+      </main>
+      
       <p>
         The transaction cost/fee quoted is for a median completion time of around two minutes; this site will eventually be updated to include live completion time estimates.
       </p>
