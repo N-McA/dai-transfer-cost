@@ -1,0 +1,187 @@
+<!doctype html>
+  <html lang=en>
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-122338512-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-122338512-1');
+      gtag('config', '<GA_TRACKING_ID>', { 'anonymize_ip': true });
+
+    </script>
+
+    <meta charset=utf-8>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Mobile-friendly display of the current DAI transaction cost / fee. Updated in real time.">
+    <meta name="keywords" content="DAI,Fee,Cost,Transfer,ETH,Ethereum,Crypto,Cryptocurrency,Stablecoin,Stable">
+    <meta name="author" content="Off Chain Capital LTD.">
+    <meta name="google-site-verification" content="3vWtSJhUFtj99qLDPls9EVu6cfJsHsIrjLV34NzGC18" />
+    <title>DAI-Fee.info</title>
+    <link rel="icon" href="imgs/dai-favicon.png">
+    <link rel="canonical" href="https://www.dai-fee.info/how.html">
+  </head>
+  <body>
+    <style>
+
+      .medium-font { font-size: 3vmin; }
+      @media (max-width: 350px) {
+        .medium-font {
+          font-size: 1rem;
+        }
+      }
+
+      body {
+        color: #8D94AD;
+        font-family: Verdana, Tahoma, sans-serif;
+        font-size: 1rem;
+        background-color: #1C2236;
+        text-align: left;
+        padding-left: 2rem;
+        padding-right: 2rem;  
+        max-width: 640px;
+        margin-left: auto;
+        margin-right: auto;      
+      }
+
+      a {
+        color: #8D94AD;
+      }
+
+      #dai-cost-p {
+        font-size: 15vmin; 
+        font-family: Tahoma, sans-serif;
+        font-weight: bold;       
+        color: whitesmoke;                
+        margin-top: 0rem;
+        margin-bottom: 0rem;
+      }
+
+      #dai-cost-p.loading {
+        font-size: 12vmin; 
+        font-family: Tahoma, sans-serif;
+        color: grey;       
+      }
+
+      .unit-button {
+        padding-left: 2vmin;
+        padding-right: 2vmin;
+        cursor: pointer;
+      }
+
+      .unit-button:hover {
+        font-weight: bold;
+      }
+      
+      .unit-button.selected {
+        color: green;
+        font-weight: bold;        
+      }
+
+      .center-image {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 30vmin;
+        max-height: 30vmin;
+      }
+
+      .bullet-image {
+        display: inline-block;
+        max-width: 10vmin;
+        max-height: 10vmin;
+        vertical-align: middle;
+        margin: 1rem;
+        margin-bottom: .3rem;
+        margin-top: 0.3rem;
+      }
+
+      .icon-image {
+        display: inline-block;
+        max-width: 1.75em;
+        max-height: 1.75em;
+        vertical-align: middle;
+        margin-right: 0.5em;
+        position: relative;
+        top: -0.13rem;
+      }
+
+      .link-list-el {
+        margin-bottom: 0rem;
+        margin-top: 0rem;
+      }
+
+      .link-list {
+        display: inline-block;
+        text-align: left;
+      }
+
+      .logo-bar {
+        margin-top: 3vh;
+        text-align: left;
+        vertical-align: middle;
+      }
+
+      .logo-bar a {
+        text-decoration: none;
+        color: whitesmoke;        
+      }
+
+    </style>
+
+      <div class="logo-bar medium-font">
+        <a href="https://www.dai-fee.info"> 
+          <img 
+            class='icon-image' 
+            src="imgs/dai-logo.png" 
+            alt="The DAI Logo">DAI-Fee.info</a>
+      </div>
+
+      <main>
+
+        <p class='medium-font'>
+          The current cost of a DAI transaction may be determined as a function of three variables:
+        </p>
+        <ul>
+            <li>the gas price that you offer to pay</li>
+            <li>the amount of gas used by a DAI contract call (which does not change)</li>
+            <li>the current ETH/USD exchange rate</li>
+        </ul>
+        <p class='medium-font'>
+          We then have: 
+        </p> 
+        <p>
+          (transaction cost) = (gas price in ETH) * (gas used) * (exchange rate)
+        </p>
+        <p class='medium-font'>
+          By offering to pay more for gas, you can make your transaction faster. This page uses <a href="https://ethgasstation.info"> ETH Gas Station</a> to determine a sensible gas price, which allows for transactions to complete in ~2 minutes. 
+        </p>
+        
+        
+        <div class='link-list medium-font'>
+      
+          <p class='link-list-el'><a href="https://makerdao.com/"> 
+            <img 
+              class='bullet-image' 
+              src="imgs/dai-logo.png" 
+              alt="The DAI Stablecoin Logo">Learn more about DAI</a>
+          </p> 
+
+          <p class='link-list-el'><a href="https://ethereum.org/"> 
+            <img 
+              class='bullet-image' 
+              src="imgs/ethereum-logo.png" 
+              alt="The Ethereum Logo">Learn more about ETH</a>
+          </p> 
+        </div>
+      </main>
+
+  </body>
+  <footer>
+    <p>
+      © Off Chain Capital LTD.
+    </p>
+  </footer>
+</html>
