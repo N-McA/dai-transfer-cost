@@ -1,0 +1,185 @@
+<!doctype html>
+  <html amp lang=en>
+  <head>
+    <!-- AMP Requires: -->
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <!-- END AMP Requires -->
+  
+    <meta charset=utf-8>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <meta name="description" content="Mobile-friendly display of the current DAI transaction cost / fee. Updated in real time.">
+    <meta name="keywords" content="DAI,Fee,Cost,Transfer,ETH,Ethereum,Crypto,Cryptocurrency,Stablecoin,Stable">
+    <meta name="author" content="Off Chain Capital LTD.">
+    <meta name="google-site-verification" content="3vWtSJhUFtj99qLDPls9EVu6cfJsHsIrjLV34NzGC18" />
+    <title>DAI-Fee.info</title>
+    <link rel="icon" href="imgs/dai-favicon.png">
+    <link rel="canonical" href="https://www.dai-fee.com">
+
+    <style amp-custom>
+
+        .medium-font { font-size: 5vmin; }
+        @media (max-width: 350px) {
+          .medium-font {
+            font-size: 1rem;
+          }
+        }
+  
+        body {
+          color: #8D94AD;
+          font-family: Verdana, Tahoma, sans-serif;
+          font-size: 1rem;
+          background-color: #1C2236;
+          text-align: center;
+          padding-left: 2rem;
+          padding-right: 2rem;  
+          max-width: 640px;
+          margin-left: auto;
+          margin-right: auto;      
+        }
+  
+        a {
+          color: #8D94AD;
+        }
+  
+        #dai-cost-p {
+          font-size: 15vmin; 
+          font-family: Tahoma, sans-serif;
+          font-weight: bold;       
+          color: whitesmoke;                
+          margin-top: 0rem;
+          margin-bottom: 0rem;
+        }
+  
+        #dai-cost-p.loading {
+          font-size: 12vmin; 
+          font-family: Tahoma, sans-serif;
+          color: grey;       
+        }
+  
+        .unit-button {
+          padding-left: 2vmin;
+          padding-right: 2vmin;
+          cursor: pointer;
+        }
+  
+        .unit-button:hover {
+          font-weight: bold;
+        }
+        
+        .unit-button.selected {
+          color: green;
+          font-weight: bold;        
+        }
+  
+        .center-image {
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+          max-width: 30vmin;
+          max-height: 30vmin;
+        }
+  
+        .bullet-image {
+          /* display: inline-block; */
+          vertical-align: middle;
+          margin: 1rem;
+          margin-bottom: .3rem;
+          margin-top: 0.3rem;
+        }
+  
+        .icon-image {
+          display: inline-block;
+          vertical-align: middle;
+          margin-right: 0.5em;
+          position: relative;
+          top: -0.13rem;
+        }
+  
+        .link-list-el {
+          margin-bottom: 0rem;
+          margin-top: 0rem;
+        }
+  
+        .link-list {
+          display: inline-block;
+          text-align: left;
+        }
+  
+        .logo-bar {
+          margin-top: 3vh;
+          text-align: left;
+          vertical-align: middle;
+        }
+  
+        .logo-bar a {
+          text-decoration: none;
+          color: whitesmoke;        
+        }
+  
+      </style>
+
+  </head>
+  <body>
+
+      <div class="logo-bar medium-font">
+        <a href="https://www.dai-fee.info"> 
+          <span><amp-img 
+            width="1.75rem"
+            height="1.75rem"
+            class='icon-image' 
+            src="imgs/dai-logo.png" 
+            alt="The DAI Logo"></span>DAI-Fee.info</a>
+      </div>
+
+      <main>
+        <div class='price-bar medium-font'>
+            <p> Transferring any amount of DAI currently costs:</p>    
+            <amp-iframe width="10rem" height="3.5rem"
+                sandbox="allow-scripts"
+                layout="responsive"
+                frameborder="0"
+                src="just-number.html">
+              <!-- <amp-img layout="fill" src="imgs/ethereum-logo.png" placeholder></amp-img> -->
+              <p placeholder>This</p>
+            </amp-iframe>
+        </div>
+        
+        <div class='link-list medium-font'>
+      
+          <p class='link-list-el'><a href="https://makerdao.com/"> 
+            <span><amp-img 
+              width="10vmin"
+              height="10vmin"
+              class='bullet-image' 
+              src="imgs/dai-logo.png" 
+              alt="The DAI Stablecoin Logo"></span>Learn more about DAI</a>
+          </p> 
+
+          <p class='link-list-el'><a href="https://ethereum.org/"> 
+            <span><amp-img 
+              width="10vmin"
+              height="10vmin"
+              class='bullet-image' 
+              src="imgs/ethereum-logo.png" 
+              alt="The Ethereum Logo"></span>Learn more about ETH</a>
+          </p> 
+        </div>
+      </main>
+      
+      <p>
+        The transaction cost/fee quoted is for a median completion time of around two minutes; this site will eventually be updated to include live completion time estimates.
+      </p>
+
+  </body>
+  <footer>
+    <p>
+      This site would not be possible without the APIs provided by
+      <a href="https://ethgasstation.info"> ETH Gas Station</a> and <a href="https://cryptocompare.com">CryptoCompare</a>. They provide more detailed information about gas prices and exchange rates respectively.
+    </p>
+    <p>
+      © Off Chain Capital LTD.
+    </p>
+  </footer>
+</html>
