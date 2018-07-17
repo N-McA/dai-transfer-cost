@@ -1,6 +1,7 @@
 
 # README
 
-Display the current cost of a DAI transaction.
+[Shows the current cost / fee for a DAI transaction](https://www.dai-fee.info)
 
 That's about it tbh.
+
